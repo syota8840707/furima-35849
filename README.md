@@ -1,24 +1,57 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# テーブル設計
 
-Things you may want to cover:
+##  usersテーブル
 
-* Ruby version
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| name               | string | null: false |
+| name_reading       | string | null: false |
+| birthday           | day    | null: false|
 
-* System dependencies
+##  sell-itemsテーブル
 
-* Configuration
+| Column                   | Type        | Options     |
+| ------------------------ | ----------- | ----------- |
+| item-name                | string      | null: false |
+| item-info                | text        | null: false |
+| item-category            | integer     | null: false |
+| item-sales-status        | integer     | null: false |
+| item-shipping-fee-status | integer     | null: false |
+| item-prefecture          | integer     | null: false |
+| item-scheduled-delivery  | integer     | null: false |
+| item-price               | integer     | null: false |
+| user                     | references  | null: false, foreign_key: true |
+| buy-sell                 | references  | null: false, foreign_key: true |
 
-* Database creation
+###  Association
 
-* Database initialization
+-belongs_to :user
+-has_one    :buy-item
 
-* How to run the test suite
+##  buy-itemsテーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| card-number        | integer       | null: false |
+| card-exp-month     | integer       | null: false |
+| card-exp-year      | integer       | null: false |
+| card-cvc           | integer       | null: false |
+| postal-code        | integer       | null: false |
+| prefecture         | integer       | null: false |
+| city               | string        | null: false |
+| addresses          | string        | null: false |
+| building           | string        |              |
+| phone-number       | string        | null: false | 
+| user               | references    | null: false, foreign_key: true |
+| sell-item          | references    | null: false, foreign_key: true |
 
-* Deployment instructions
+###  Association
 
-* ...
+-belongs_to :user
+-belongs_to :sell-item
+
