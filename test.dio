@@ -48,11 +48,11 @@
                     <mxGeometry y="30" width="300" height="330" as="geometry"/>
                 </mxCell>
                 <mxCell id="30" value="order_addressesテーブル" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" vertex="1" parent="1">
-                    <mxGeometry x="5" y="600" width="290" height="240" as="geometry">
+                    <mxGeometry x="5" y="580" width="290" height="240" as="geometry">
                         <mxRectangle x="40" y="120" width="50" height="26" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="33" value="&#10;postal-code                   (string型,  NOT  NULL)&#10;&#10;prefecture_id                  (integer型,  NOT  NULL)&#10;&#10;city                                (string型,  NOT  NULL)&#10;&#10;addresses                     (string型,  NOT  NULL)&#10;&#10;building                         (string型 )&#10;&#10;phone_number              (string型,  NOT  NULL)&#10;&#10;order_dates                 (references型  NOT  NULL)&#10;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="30">
+                <mxCell id="33" value="&#10;postal-code                   (string型,  NOT  NULL)&#10;&#10;prefecture_id                  (integer型,  NOT  NULL)&#10;&#10;city                                (string型,  NOT  NULL)&#10;&#10;addresses                     (string型,  NOT  NULL)&#10;&#10;building                         (string型 )&#10;&#10;phone_number              (string型,  NOT  NULL)&#10;&#10;&#10;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="30">
                     <mxGeometry y="30" width="290" height="210" as="geometry"/>
                 </mxCell>
                 <mxCell id="34" value="FurimaアプリER図" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;fontSize=25;" vertex="1" parent="1">
@@ -74,7 +74,7 @@
                 <mxCell id="49" value="user                          (references型  NOT NULL)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="48">
                     <mxGeometry y="26" width="280" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="50" value="item                          (references型,  NOT  NULL)&#10;&#10;order_addresses       (references型 NOT NULL)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="48">
+                <mxCell id="50" value="item                          (references型,  NOT  NULL)&#10;&#10;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="48">
                     <mxGeometry y="56" width="280" height="54" as="geometry"/>
                 </mxCell>
             </root>

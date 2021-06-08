@@ -14,8 +14,6 @@
 | last_name_kana     | string      | null: false                    |
 | first_name_kana    | string      | null: false                    |  
 | birthday           | date        | null: false                    |
-| item               | references  | null: false, foreign_key: true |
-| order_date         | references  | null: false, foreign_key: true |
 ###  Association
 
 -has_many :items
@@ -29,7 +27,7 @@
 | name                        | string      | null: false                    |
 | info                        | text        | null: false                    |
 | category_id                 | integer     | null: false                    |
-| sales_status                | integer     | null: false                    |
+| sales_status_id             | integer     | null: false                    |
 | shipping_fee_status_id      | integer     | null: false                    |
 | prefecture_id               | integer     | null: false                    |
 | scheduled_delivery_id       | integer     | null: false                    |
@@ -48,12 +46,11 @@
 | ------------------ | ---------- | ------------------------------ |
 | user               | references | null: false, foreign_key: true |
 | item               | references | null: false, foreign_key: true |
-| order_addresses    | references | null: false, foreign_key: true |
 ###  Association
 
 -belongs_to :user
 -belongs_to :item
--has_one    :order_addresses
+-has_one    :order_address
 
 
 ##  order_addresses
@@ -66,9 +63,8 @@
 | addresses          | string        | null: false                  |
 | building           | string        |
 | phone_number       | string        | null: false                  | 
-| order_date         | references  | null: false, foreign_key: true |
-###  Association
 
+###  Association
 -belongs_to :order_date
 
 
