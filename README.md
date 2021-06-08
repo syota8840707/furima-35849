@@ -7,7 +7,7 @@
 | Column             | Type        | Options                        |
 | ------------------ | ------------| ------------------------------ |
 | nickname           | string      | null: false                    |
-| email              | string      | unique: true                   |
+| email              | string      | null: false, unique: true      |
 | encrypted_password | string      | null: false                    |
 | last_name          | string      | null: false                    |
 | first_name         | string      | null: false                    |
@@ -33,11 +33,10 @@
 | scheduled_delivery_id       | integer     | null: false                    |
 | price                       | integer     | null: false                    |
 | user                        | references  | null: false, foreign_key: true |
-| order_date                  | references  | null: false, foreign_key: true |
 ###  Association
 
 -belongs_to :user
--has_one    :order_date
+-has_one :order_date
 
 
 ##  order_dateテーブル
@@ -62,8 +61,8 @@
 | city               | string        | null: false                  |
 | addresses          | string        | null: false                  |
 | building           | string        |
-| phone_number       | string        | null: false                  | 
-
+| phone_number       | string        | null: false                  |
+| order_date         | references | null: false, foreign_key: true  |
 ###  Association
 -belongs_to :order_date
 
