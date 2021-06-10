@@ -9,6 +9,11 @@ RSpec.describe User, type: :model do
         it 'ニックネーム、メールアドレス、パスワード、パスワード（認証）、名前、名字、生年月日があれば登録できる' do
           expect(@user).to be_valid
         end
+        it 'パスワードが６文字以上なら登録できる' do
+          @user.password
+          @user.password_confirmation
+          expect(@user).to be_valid
+        end
       end
       
       context '保存できない場合' do
@@ -43,11 +48,6 @@ RSpec.describe User, type: :model do
           @user.valid?
           expect(@user.errors.full_messages).to include("Password is invalid")
         end  
-        it 'パスワードが６文字以上なら登録できる' do
-          @user.password
-          @user.password_confirmation
-          expect(@user).to be_valid
-        end
         it 'パスワードが5文字以下だと登録できない' do
           @user.password = '12345'
           @user.password_confirmation = '12345'
