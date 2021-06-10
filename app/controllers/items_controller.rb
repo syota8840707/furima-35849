@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   def index
-  end  
+  end
 
   def new
-  end  
+  end
 end
