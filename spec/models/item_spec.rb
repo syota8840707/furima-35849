@@ -10,11 +10,10 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it '価格が半角数字のみなら出品できる' do
-        @item.price = '400000'
+        @item.price = 400000
         expect(@item).to be_valid
       end
       it '価格は¥300~¥9,999,999の間のみなら出品できる' do
-        @item.price = 300
         @item.price = 9999999
         expect(@item).to be_valid
       end
