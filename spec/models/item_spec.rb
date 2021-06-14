@@ -14,8 +14,8 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it '価格は¥300~¥9,999,999の間のみなら出品できる' do
-        @item.price = '300'
-        @item.price = '9999999'
+        @item.price = 300
+        @item.price = 9999999
         expect(@item).to be_valid
       end
     end
@@ -41,7 +41,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Category のセレクタから選択して下さい')
       end
       it 'カテゴリーのid1が選択されると出品出来ない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category のセレクタから選択して下さい')
       end
