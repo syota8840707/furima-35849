@@ -13,6 +13,11 @@ RSpec.describe Item, type: :model do
         @item.price = '400000'
         expect(@item).to be_valid
       end  
+      it '価格は¥300~¥9,999,999の間のみなら出品できる' do
+        @item.price = '300'
+        @item.price = '9999999'
+        expect(@item).to be_valid
+      end  
     end
     context '出品出来ない場合' do
       it '画像がなければ出品出来ない' do
