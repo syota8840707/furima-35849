@@ -5,13 +5,13 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @items = Item.order("created_at DESC")
+    @items = Item.order('created_at DESC')
 
     if user_signed_in?
       render new_item_path
     else
       redirect_to new_user_session_path
-    end  
+    end
   end
 
   def create
@@ -20,12 +20,13 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render new_item_path
-    end  
-  end  
-
+    end
+  end
 
   private
+
   def item_params
-    params.require(:item).permit(:image, :name, :info, :category_id, :sales_status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, :price).merge(user_id: current_user.id)
-  end  
+    params.require(:item).permit(:image, :name, :info, :category_id, :sales_status_id, :shipping_fee_status_id, :prefecture_id,
+                                 :scheduled_delivery_id, :price).merge(user_id: current_user.id)
+  end
 end
