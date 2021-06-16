@@ -1,0 +1,2 @@
+class OrderDate < ApplicationRecord
+end
