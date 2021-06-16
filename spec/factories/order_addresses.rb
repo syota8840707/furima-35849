@@ -1,4 +1,4 @@
 FactoryBot.define do
-  factory :order_date do
+  factory :order_address do
   end
 end
