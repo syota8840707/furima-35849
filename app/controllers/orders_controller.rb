@@ -1,10 +1,9 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create]
-  before_action :set_order, only: [:index, :create]
+  before_action :authenticate_user!
+  before_action :set_order
+  before_action :set_present
   def index
     @date_address = DateAddress.new
-    
-    redirect_to root_path if (@order.user_id == current_user.id) || @order.order_date.present?
   end
 
   def create
@@ -41,5 +40,9 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def set_present
+    redirect_to root_path if (@order.user_id == current_user.id) || @order.order_date.present?
   end
 end

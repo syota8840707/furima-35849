@@ -1,6 +1,6 @@
 class DateAddress
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :address, :bilding, :phone_number, :order_date_id, :token
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :address, :bilding, :phone_number, :token
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'input correctly' }
@@ -10,10 +10,8 @@ class DateAddress
   end
 
   def save
-    # 寄付情報を保存し、変数donationに代入する
     order_date = OrderDate.create(item_id: item_id, user_id: user_id)
-    # 住所を保存する
-    # donation_idには、変数donationのidと指定する
+    
     OrderAddress.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, bilding: bilding,
                         phone_number: phone_number, order_date_id: order_date.id)
   end

@@ -70,8 +70,12 @@ RSpec.describe DateAddress, type: :model do
         @date_address.valid?
         expect(@date_address.errors.full_messages).to include('Phone number input only number')
       end
-      it '電話番号は、９桁以下12桁以上の半角数値だと購入出来ない' do
+      it '電話番号は、９桁以下の半角数値だと購入出来ない' do
         @date_address.phone_number = '7777777'
+        @date_address.valid?
+        expect(@date_address.errors.full_messages).to include('Phone number input only number')
+      end
+      it '電話番号は、12桁以上の半角数値だと購入出来ない' do
         @date_address.phone_number = '55555555555555'
         @date_address.valid?
         expect(@date_address.errors.full_messages).to include('Phone number input only number')
