@@ -80,6 +80,16 @@ RSpec.describe DateAddress, type: :model do
         @date_address.valid?
         expect(@date_address.errors.full_messages).to include('Phone number input only number')
       end
+      it '電話番号が数字のみでないと購入できないこと(英数混合)' do
+        @date_address.phone_number = 'o555555555o'
+        @date_address.valid?
+        expect(@date_address.errors.full_messages).to include('Phone number input only number')
+      end
+      it '電話番号が数字のみでないと購入できないこと(ハイフンあり)' do
+        @date_address.phone_number = '555-555-555'
+        @date_address.valid?
+        expect(@date_address.errors.full_messages).to include('Phone number input only number')
+      end
       it 'userが紐付いていないと購入できないこと' do
         @date_address.user_id = nil
         @date_address.valid?
