@@ -23,6 +23,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item.order_date.present?
+    redirect_to root_path
   end
 
   def update

@@ -1,29 +1,45 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_order, only: [:index, :create]
   def index
-    
     @date_address = DateAddress.new
-  end
-  def create
     
+    redirect_to root_path if (@order.user_id == current_user.id) || @order.order_date.present?
+  end
+
+  def create
     @date_address = DateAddress.new(order_date_params)
     if @date_address.valid?
+      pay_item
       @date_address.save
       redirect_to root_path
     else
       render :index
     end
-
-  end 
+  end
 
   private
 
   def order_date_params
-    params.require(:date_address).permit(:postal_code, :prefecture_id, :city, :address, :bilding, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id])
-  end  
+    params.require(:date_address).permit(:postal_code, :prefecture_id, :city, :address, :bilding, :phone_number).merge(
+      user_id: current_user.id, item_id: params[:item_id], token: params[:token]
+    )
+  end
+
   def set_order
     @order = Item.find(params[:item_id])
-  end  
+  end
 
+  def order_params
+    params.require(:date_address).permit(:price).merge(token: params[:token])
+  end
+
+  def pay_item
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']  # 秘密鍵代入した環境変数を書いています
+    Payjp::Charge.create(
+      amount: @order.price,
+      card: order_params[:token],
+      currency: 'jpy'
+    )
+  end
 end

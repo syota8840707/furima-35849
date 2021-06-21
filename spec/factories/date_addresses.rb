@@ -6,6 +6,6 @@ FactoryBot.define do
     address { '1-1' }
     bilding { '東京ハイツ' }
     phone_number { '07055856899' }
-    
+    token { 'tok_abcdefghijk00000000000000000' }
   end
 end
